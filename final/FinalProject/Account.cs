@@ -8,21 +8,29 @@ class Account
 
     public Account(string name, double money)
     {
-
+        _accountName = name;
+        _money = money;
     }
 
-    public void Deposit(double amount)
+    public void SetMoney(double amount)
     {
+        _money += amount;
+    }
 
+    public double GetMoney()
+    {
+        return _money;
     }
 
     public void Withdraw(double amount)
     {
-
+        _money -= amount;
     }
 
     public string Display()
     {
-        return "";
+        return ($"{_accountName} - ${_money}");
     }
+
+
 }

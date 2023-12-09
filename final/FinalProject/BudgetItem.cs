@@ -12,25 +12,32 @@ class BudgetItem
     {
         _category = category;
         _budget = budget;
+        _used = 0;
     }
 
     public void RecordPayment(double payment)
     {
-
+        _used += payment;
     }
 
     public string Display()
     {
-        return "";
+        SetDifference();
+        return ($"{_category} - ${_budget}: You have used ${_used}, this is a difference of ${_difference}");
     }
 
     private void SetDifference()
     {
-
+        _difference = _budget - _used;
     }
 
-    public double GetDifference()
+    public string GetCategory()
     {
-        return _difference;
+        return _category;
+    }
+
+    public void SetUsed(double used)
+    {
+        _used += used;
     }
 }

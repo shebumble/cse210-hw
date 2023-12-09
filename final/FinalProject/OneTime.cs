@@ -7,21 +7,51 @@ class OneTime : Bill
 
     public override string Display()
     {
-        return "";
+        string description = GetDescription();
+        double d = GetDue();
+        double p = GetPaid();
+        double diff = GetDifference();
+        bool x = PaidFull();
+        string complete;
+
+        if (x == true)
+        {
+            complete = "[X]";
+        }
+        else
+        {
+            complete = "[ ]";
+        }
+
+        return ($"{complete} {description} - ${p}/${d} with ${diff} still owed.");
     }
 
-    public override void MakePayment()
+    public override void MakePayment(double amount)
     {
-        
+        SetPaid(amount);
     }
 
     public override bool PaidFull()
     {
-        return true;
+        double d = GetDue();
+        double p = GetPaid();
+        if (p >= d)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public double GetDifference()
+    public override string GetType()
     {
-        return (0.00);
+        return ("One");
+    }
+
+    public override void Charge()
+    {
+        
     }
 }
